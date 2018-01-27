@@ -445,8 +445,130 @@ beamlines at BNL's NSLS-II.
 \section{Biological Science Challenges}
 ...
 
-\section{High Energy and Nuclear Physics Challenges}
-...
+\section{Nuclear Physics Challenges}
+\hspace{0.5cm} {\bf Motivation}:
+One of the top priorities of DOE's Office of Science Nuclear Physics
+program is to understand the high temperature quark-gluon plasma (QGP)
+state.  The QGP is the novel state of matter through which the
+universe evolved only microseconds following the big bang.  In this
+regime the unbound quarks and gluons move coherently in a nearly
+perfect (lowest theoretical viscosity) liquid like-state.
+Understanding the nature of this exciting state of matter and how it
+is created is one of the great challenges of QCD physics.  The
+Relativistic Heavy Ion Collider (RHIC) at BNL has created a QGP, and 
+has begun to explore the engineering of its properties, by varying 
+the beam energy and species of the colliding nuclei that we use to 
+form the QGP, and by taking advantage of the natural
+variation in the initial conditions for its formation.  As a
+result of the time and spatial scales involved, however, one cannot
+directly observe the QGP state and its nature must be determined by
+marrying experimental data of a later stage in the process with
+uncertain physics models of the dynamics.  This requires
+multiscale/multiphysics and Bayesian inversion methods to infer the
+unseen state.  
+
+{\bf Mathematical challenges}  With the diversity
+and complexity of the physical processes involved, mathematical
+challenges abound in inferring the QGP dynamics.  First the spatial
+and time scales range from $10^{-15}$ meters to $10^{1}$ m.  For the
+first $10^{-23}$ seconds after formation the QGP dynamics has a
+continuum description in terms of relativistic hydrodynamics.
+However, this early stage is not directly observable.  As time
+evolves, the density decreases and a kinetic stage kicks in which is
+governed by a Boltzmann equation.  The system evolves from a QGP
+phase, hadronizes into a gas phase, and then emerges into more
+familiar particles at the detector.  Inference of the early
+hydrodynamic stage requires solving inverse problems that sequentially
+couple hydrodynamics and kinetics.  The data from the experiment is
+noisy, and despite a deep understanding of many of the physical
+processes there remains considerable uncertainty in the form and
+parameters of the hydrodynamic and kinetic descriptions.  This
+uncertainty necessitates a computationally intensive iterative process
+for determining the hydrodynamic state and initial conditions.
+Bayesian methods are typically used and it is expensive to compute an
+ensemble of the forward models evolutions.  Model reduction and an
+optimal design of computer experiments (as well as actual accelerator
+/ experimental design) is needed for a more complete understanding of
+QGPs. To date, the problem has been simplified to one of estimating
+$O(10)$ parameters for the model and for the initial
+condition \cite{bernhard2016applying, bernhard2015quantifying,
+auvinen2016systematic, bernhard2017characterization,
+bass2017determination}.  We will attempt to incorporate greater model
+uncertainty and to invert for more of the physical state at various
+times during the experiment.
+
+{\bf Strategy:}
+We propose to take a 3-part strategy to applying the tools
+developed by this research towards the study of the QGP.
+In the first stage, we will explore an optimization of the 
+upcoming Beam Energy Scan program beginning in FY19.
+In the Beam Energy Scan program, RHIC will 
+explore the QCD phase diagram by changing the baryon doping 
+of the QGP, enabled by changing the beam energy of
+the colliding ions, in order to find, or exclude, a conjectured
+critical point.  The measures sensitive to the critical point
+are well understood, as are the costs and benefits of running
+at a certain beam energy.  The question to be answered is 
+what combination of beam energies, with what amount of
+running time, would maximize the potential of the critical
+point search.
+
+In the second stage, we will explore the optimization
+of the allocation of data bandwidth within the experiment.
+All collider experiments cannot record full event information
+for every collision that occurs in the collider, but use a combination
+of partial event information and fast processing (usually in FPGA's)
+to tag in real time (at multi-MHz speed) those events
+that are most interesting for later analysis.  This process is 
+called ``triggering'', with the result that the limited bandwidth
+of full events written to the computer farm for later analysis
+is filled by a suite of different ``triggers'', up to 64 in the 
+case of the STAR experiment, each of which is targeted to
+a specific physics program, with its own false positive
+rate and efficiency for selecting the events of interest.
+ The relative population of triggers are controllable, 
+via trigger definition and random
+sampling, and change with time as the conditions in the 
+collider change.  The question to be answered is the optimization
+of this trigger population to maximize the physics potential, in real time,
+given the constraints and conditions of the collider and experiment.
+
+In the third stage, we will extend these techniques to 
+higher dimensional hydrodynamic modeling.  Besides
+the search for the critical point, a wider goal of the Beam Energy
+Scan is to explore how the hydrodynamic properties
+of the QGP, such as the viscosity, change with baryon 
+doping and initial temperature, in order to take 
+full advantage of the three orders of magnitude span
+in available collision energy with the combined data from RHIC
+and the LHC.   
+
+{\bf Impact:} In addition to providing higher confidence in the
+description of QGP physics, this motivating application provides a
+representative testbed for a set of experiments where no direct
+observation is possible but only an inversion of multiscale and
+multiphysics processes are available only at later times.  Such
+applications appear in a host of other exciting and important
+dynamical inverse problems including earth science, climate, medical
+imaging. The methods developed here could benefit optimal use of large
+experimental facilities as well as in their design.  Moreover, BNL is
+in the process of developing the experimental program for a future
+Electron-Ion Collider (EIC) collider at BNL (eRHIC). The design
+considerations of the experiments are derived from the detection of
+the different signatures. Each signature carries its own experimental
+challenges and include feedback to how well one can constrain the
+theoretical predictions.  The optimization of the eRHIC design and
+experiments could make use of the mathematical and algorithmic methods
+developed in Diamond2.  This is important for the RHIC program, e.g.,
+identifying the optimal set of beam energies for the beam energy scan
+to search for a critical point, and to select optimal collision
+systems by asking the question which data would be most impactful with
+respect to answering specific physics questions.  The methods here
+could also provide a breakthrough for the design of optimal detector
+configurations (acceptance, solution, etc.) for future EIC
+experiments.
+
+
 
 \newpage
 
