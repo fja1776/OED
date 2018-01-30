@@ -443,16 +443,144 @@ beam epitaxy techniques together with characterization using the
 beamlines at BNL's NSLS-II.
 
 \section{Biological Science Challenges}
-...
+The long-term vision of Biological Systems Science is to enable predictive biology. To meet this goal, it has been recognized that biological complexity must be both embraced and leveraged. Key will be determining each of the genome-encoded factors contributing to biochemical pathways of interest, their specific molecular function and how they interact. Understanding these interactions in sufficient detail to allow system behavior to be predicted, even in response to significant environmental perturbations, will be crucial for robust genome-scale redesign of bioenergy. 
+As molecular biology has transitioned to systems biology in the post-genomic era, the adoption of in silico approaches has become essential in data-centric modern biology. One manifestation of this movement has been the development of constraint based models of cellular metabolism, wherein the cellular, stoichiometric and enzyme reaction limits are defined, and all allowable solutions may be searched. Within defined space, the model may be optimized to allow for optimal production of for example a key metabolite of specific interest, or enable optimal cell viability when presented with limited nutrients. However, for the aforementioned reasons these models are far from complete. Only a small fraction of any given genomes encoded enzymes are sufficiently characterized to come close to mapping a model representative of a complete cell. Very few models are sufficiently sophisticated to incorporate individual cellular spaces and the kinetics of trafficking metabolites between these spaces. Instead, pathways unique to mitochondria or chloroplasts in plant cells are often assumed to also occur in the cytoplasm. Metabolic models also suffer from being informed by data gained from a handful of model organisms (e.g. Escherichia coli, or Saccharomyces cerevisae), which are generically assumed to be representative of very distantly related organism.
+The current absence of the foundational knowledge surrounding protein function, regulation and interaction serves as a barrier for model improvement and consequently the ultimate goal of biological predictive design. This comes in spite of a series of significant recent milestones in biology: i) every organism genome (or ecosystem) is amenable to genomic and post-genomic (e.g. RNA-Seq) analysis, ii) access and availability of this genome-sourced data is democratized across in silico platforms iii) gene synthesis is both rapid and cost-effective iv) the development of techniques enabling genome-scale precision editing. Consequently, and paradoxically, molecular biologists are faced with being able to engineer biological systems genome-wide, but lacking the insight of what or how to optimally rewire metabolism for designed gain. Given this, many engineering projects have met with limited success: knowing what to engineer and how to engineer it to achieve a desired outcome remains a bottleneck. This is especially the case in plants, which, due to genome size, ploidy extensive genetic radiation and until recently limited genetic tools, have remained far less intensively studied than other domains of life.
+We have established the Quantitative Plant Science Initiative (QPSI) at BNL as a scalable capability combining multi-disciplinary expertise and state-of-the-art high throughput (HTP) technologies. Specifically, the purpose of this capability is to accelerate the acquisition of systems-level functional knowledge that will enable predictive plant biology. One core component of the capability exploits the rapid growth rate and genetic tractability of microbial photosynthetic organisms, which maintain most of protein-coding repertoire of more complex land plants, in combination with laboratory automation. Via experimental miniaturization we are able to use these microbial plants to generate near-genome-saturating mutant libraries in approximately 2 hrs by high-efficiency transformation with a selectable gene cassette marker. The marker integrates at random in the genome and disrupts the function of any gene into which it inserts. Robot-enabled mutant picking, arraying, and compression into 384-well microplates is followed by automated simultaneous screening of 30,000 single-gene disrupted lines under defined growth conditions, with each screening cycle taking around 5 days to complete. This experimental setup enables us to probe at a genome-scale level all genes involved in any process we choose to screen for.
+Having identified genes of previously unknown function in the process described above, a second core component of QPSI involves the engineering of proteins for improved performance. This is done by both rational design methods, for example introducing mutations into the active site of an enzyme, or by non-targeted directed evolution methods. The mutated proteins resulting from either of these approaches are screened for activity and those resulting in the greatest improvement can be engineered into the organism’s genome.
+Both of these components serve to gain from application of optimal experimental design. Since our phenome screening experiments can be either independent or iterative, being provisioned with guidance as to the next most appropriate screen, or which collection of genes next to target, towards a defined end goal may result in significant time and reagent expenditure. Secondly, it is highly likely that our engineering will yield multiple single nucleotide polymorphism (SNP) mutations that result in higher activity. Knowing specifically which combinations of these mutations to reconstitute on the genome for the greatest overall gain is both protein-specific and largely unknown. Intuitively, and in the possible absence of information (such as a crystal structure), reengineering a handful of SNPs with the greatest individual activity increase will lead to the greatest overall increase. In reality it is unknown how these SNPs will interact and/or influence the three-dimensional shape. Exploiting OED to learn from iterative rounds of genome engineering efforts and future guidance for selecting mutations to carry forwards will potentially lead to increased understanding of how to engineer proteins as well as expediting a route to optimized improvements. Finally, development and implementation of the underlying math and computation for these specific cases will major positive outcomes in other areas of biology and healthcare.  
 
-\section{High Energy and Nuclear Physics Challenges}
-...
+
+\section{Nuclear Physics Challenges}
+\hspace{0.5cm} {\bf Motivation}:
+One of the top priorities of DOE's Office of Science Nuclear Physics
+program is to understand the high temperature quark-gluon plasma (QGP)
+state.  The QGP is the novel state of matter through which the
+universe evolved only microseconds following the big bang.  In this
+regime the unbound quarks and gluons move coherently in a nearly
+perfect (lowest theoretical viscosity) liquid like-state.
+Understanding the nature of this exciting state of matter and how it
+is created is one of the great challenges of QCD physics.  The
+Relativistic Heavy Ion Collider (RHIC) at BNL has created a QGP, and 
+has begun to explore the engineering of its properties, by varying 
+the beam energy and species of the colliding nuclei that we use to 
+form the QGP, and by taking advantage of the natural
+variation in the initial conditions for its formation.  As a
+result of the time and spatial scales involved, however, one cannot
+directly observe the QGP state and its nature must be determined by
+marrying experimental data of a later stage in the process with
+uncertain physics models of the dynamics.  This requires
+multiscale/multiphysics and Bayesian inversion methods to infer the
+unseen state.  
+
+{\bf Mathematical challenges}  With the diversity
+and complexity of the physical processes involved, mathematical
+challenges abound in inferring the QGP dynamics.  First the spatial
+and time scales range from $10^{-15}$ meters to $10^{1}$ m.  For the
+first $10^{-23}$ seconds after formation the QGP dynamics has a
+continuum description in terms of relativistic hydrodynamics.
+However, this early stage is not directly observable.  As time
+evolves, the density decreases and a kinetic stage kicks in which is
+governed by a Boltzmann equation.  The system evolves from a QGP
+phase, hadronizes into a gas phase, and then emerges into more
+familiar particles at the detector.  Inference of the early
+hydrodynamic stage requires solving inverse problems that sequentially
+couple hydrodynamics and kinetics.  The data from the experiment is
+noisy, and despite a deep understanding of many of the physical
+processes there remains considerable uncertainty in the form and
+parameters of the hydrodynamic and kinetic descriptions.  This
+uncertainty necessitates a computationally intensive iterative process
+for determining the hydrodynamic state and initial conditions.
+Bayesian methods are typically used and it is expensive to compute an
+ensemble of the forward models evolutions.  Model reduction and an
+optimal design of computer experiments (as well as actual accelerator
+/ experimental design) is needed for a more complete understanding of
+QGPs. To date, the problem has been simplified to one of estimating
+$O(10)$ parameters for the model and for the initial
+condition \cite{bernhard2016applying, bernhard2015quantifying,
+auvinen2016systematic, bernhard2017characterization,
+bass2017determination}.  We will attempt to incorporate greater model
+uncertainty and to invert for more of the physical state at various
+times during the experiment.
+
+{\bf Strategy:}
+We propose to take a 3-part strategy to applying the tools
+developed by this research towards the study of the QGP.
+In the first stage, we will explore an optimization of the 
+upcoming Beam Energy Scan program beginning in FY19.
+In the Beam Energy Scan program, RHIC will 
+explore the QCD phase diagram by changing the baryon doping 
+of the QGP, enabled by changing the beam energy of
+the colliding ions, in order to find, or exclude, a conjectured
+critical point.  The measures sensitive to the critical point
+are well understood, as are the costs and benefits of running
+at a certain beam energy.  The question to be answered is 
+what combination of beam energies, with what amount of
+running time, would maximize the potential of the critical
+point search.
+
+In the second stage, we will explore the optimization
+of the allocation of data bandwidth within the experiment.
+All collider experiments cannot record full event information
+for every collision that occurs in the collider, but use a combination
+of partial event information and fast processing (usually in FPGA's)
+to tag in real time (at multi-MHz speed) those events
+that are most interesting for later analysis.  This process is 
+called ``triggering'', with the result that the limited bandwidth
+of full events written to the computer farm for later analysis
+is filled by a suite of different ``triggers'', up to 64 in the 
+case of the STAR experiment, each of which is targeted to
+a specific physics program, with its own false positive
+rate and efficiency for selecting the events of interest.
+ The relative population of triggers are controllable, 
+via trigger definition and random
+sampling, and change with time as the conditions in the 
+collider change.  The question to be answered is the optimization
+of this trigger population to maximize the physics potential, in real time,
+given the constraints and conditions of the collider and experiment.
+
+In the third stage, we will extend these techniques to 
+higher dimensional hydrodynamic modeling.  Besides
+the search for the critical point, a wider goal of the Beam Energy
+Scan is to explore how the hydrodynamic properties
+of the QGP, such as the viscosity, change with baryon 
+doping and initial temperature, in order to take 
+full advantage of the three orders of magnitude span
+in available collision energy with the combined data from RHIC
+and the LHC.   
+
+{\bf Impact:} In addition to providing higher confidence in the
+description of QGP physics, this motivating application provides a
+representative testbed for a set of experiments where no direct
+observation is possible but only an inversion of multiscale and
+multiphysics processes are available only at later times.  Such
+applications appear in a host of other exciting and important
+dynamical inverse problems including earth science, climate, medical
+imaging. The methods developed here could benefit optimal use of large
+experimental facilities as well as in their design.  Moreover, BNL is
+in the process of developing the experimental program for a future
+Electron-Ion Collider (EIC) collider at BNL (eRHIC). The design
+considerations of the experiments are derived from the detection of
+the different signatures. Each signature carries its own experimental
+challenges and include feedback to how well one can constrain the
+theoretical predictions.  The optimization of the eRHIC design and
+experiments could make use of the mathematical and algorithmic methods
+developed in Diamond2.  This is important for the RHIC program, e.g.,
+identifying the optimal set of beam energies for the beam energy scan
+to search for a critical point, and to select optimal collision
+systems by asking the question which data would be most impactful with
+respect to answering specific physics questions.  The methods here
+could also provide a breakthrough for the design of optimal detector
+configurations (acceptance, solution, etc.) for future EIC
+experiments.
+
+
 
 \newpage
 
 \begin{center}
 CONTRIBUTORS (SO FAR)
-\normalsize Francis Alexander, Masafumi Fukuto, Nicholas D'Imperio, Adolfy Hoisie,
+\normalsize Francis Alexander, Ian Blaby, Masafumi Fukuto, Nicholas D'Imperio, Adolfy Hoisie,
 Shantenu Jha, Kerstin Kleese van Dam, Robert Konik, Gabi Kotliar,
 Kevin Yager, Shinjae Yoo (Brookhaven National Laboratory), Omar
 Ghattas, J. Tinsley Oden (UT Austin), Karen Willcox, Youssef Marzouk
