@@ -575,8 +575,122 @@ configurations (acceptance, solution, etc.) for future EIC
 experiments.
 
 
+\section{Adaptive Free Energy of Binding of Small Molecules}
+
+The strength of drug binding is determined by a thermodynamic property known
+as the binding free energy (BFE). One promising technology for estimating
+binding free energies and the influence of protein and ligand composition upon
+them is molecular dynamics (MD) A diversity of methodologies have been
+developed to calculate binding affinities MD sampling and blind tests show
+that many have considerable predictive potential. With the demands of clinical
+decision support and drug design applications in mind, several computational
+protocols to compute BFE that have been designed recently. To name just a
+couple: ESMACS (enhanced sampling of molecular dynamics with approximation of
+continuum solvent) and TIES (thermodynamic integration with enhanced
+sampling).
+
+BFE protocols also address the hitherto lack of reproducibility of individual
+simulations for a variety of protein systems. The reproducibility of these
+protocols is statistical, in that it overcomes the lack of accuracy of single
+simulations, by employing ensemble-based molecular dynamics, where an
+``ensemble'' refers to the set of replicas. Averaging across multiple runs can
+reliably produce results in agreement with previously published experimental
+findings.
+
+
+\noindent {\bf Importance of Adaptivity for BFE Protocols:} An adaptive application
+workflow is defined as one for which the execution task graph changes during
+the runtime of the application workflow. The task graph could evolve due to
+any one of several different factors. For example, a change in the underlying
+protocol (algorithm), a change in the resource performance characterization,
+or an event of interest (e.g., convergence critieria reached or lack of
+convergence in a given window).
+
+A driver for adaptivity in BFE calculations is that different protocols
+(algorithmic methods) typically involve compounds with a wide range of
+chemical properties which can impact not only the time to convergence, but the
+type of sampling required to gain accurate results. In general, there is no
+way to know before running calculations exactly which setup of calculation is
+required for a particular system. BFE are computationally expensive; given the
+very large number of drug candidates, it is imperative to optimize the
+execution time while still improving the accuracy of candidate compounds.
+Adaptive methods which minimize the compute time used whilst producing binding
+free energy estimates meeting pre-defined quality criteria (such as
+convergence or statistical uncertainty below a given theshold).
+
+% BFE protocols have been sucessfully used to predict binding affinities quickly
+% and accurately. Nonetheless, they are very expensive computationally, and
+% optimizing the execution time while still improving the accuracy is necessary.
+% Given the very large number of drug candidates, it is imperative to gain
+% maximum insight into potential candidate compounds using time and resources
+% efficiently. This provides one clear motivation for the use of adaptive
+% methods which minimize the compute time used whilst producing binding free
+% energy estimates meeting pre-defined quality criteria (such as convergence or
+% statistical uncertainty below a given theshold).
+  
+In protocols such as TIES or ESMACS the number of ensemble members that will
+most impact the calculation are not known \textit{a priori}, and change
+between physical systems (drugs). Adaptive placement of $\lambda$ windows is
+likely to better capture the shape of the $\partial U/\partial\lambda$ curve,
+leading to more accurate and precise results for a given computational cost,
+as opposed to sampling each window with high frequency, leading to more
+accurate and precise results for a given computational cost. On occasion,
+alchemical methods may be very slow to converge; in such circumstances use of
+another method, such as ESMACS, may be the best option. This means that the
+most effective way to gain accurate and precise free energy results on
+industrially or clinically relavant timescales is to be able to adapt both
+sampling (intra-protocol) and even the type of calculation (inter-protocol)
+used at run time. With potentially thousands of simulations, often employing
+multiple analysis methodologies, this provides the most effective way to
+utilize these techniques and resources at scale.
+
+\noindent {\bf Mathematical Formulation of the Adaptive Execution: } We believe the
+problem of determining an optimal execution strategy for concurrent stochastic
+simulations can be formulated as:
+
+Imagine there are N resources and these can be run in parallel. There are M
+different stochastic algorithms which calculate the same quantity of interest
+but with different variances for the same amount of compute time. As a trivial
+example you have M different ways to calculate the average of some function
+say.  In the limit of an infinite run on any computing resource, the variance
+will be zero.  
+
+The distribution of run times for a given algorithm and a prescribed variance
+($\sigma$) on computing resource $i$, P$_i$($\sigma$,t) i=1,...,M. A priori we
+don’t know this distribution but we can learn about it from runs. We have a
+fixed amount of overall time to run the jobs (which can be run in parallel)
+and a fixed N. One task might be to find the optimal selection of algorithms
+to, for fixed T and given N, we can minimize the variance of the estimate of
+the mean.  The objective is to determine a strategy to determine how to
+optimize the execution. The advantages of determining optimal execution
+strategies include: (i) Greater sampling and higher throughput of drug
+candidates; (ii) more accurate binding affinity calculations, and (iii)
+Efficient resource utilization.
+
+\noindent {\bf Challenges of Adaptive Execution: } The phase space of possible
+execution strategies is large and is sensitive to algorithm (BFE protocol),
+size of ensemble, and must be computed in real-time. Furthermore, there are
+different metrics for which optimal solutions might be desired. For example,
+some times an optimal strategy for different drug candidates to determine the
+maximal convergence for a given (fixed) amount of computing capacity
+(resources) is required. Some times, for a fixed level of convergence, optimal
+utilization of computational resources are needed.
+
+% The sampling of each drug candidate varies; thus using a static and 
+% pre-determined computational time, results in a large variation in the accuracy of
+% the BFE. Further, the performance of resources fluctuate: planning for
+% resource utilization against a backdrop of varying resource performance and
+% application-level changes.
+
+% (i) Determining accurately the amount/degree of sampling, (ii)  Resource
+% Selection and Utilization problem
+
+\section{Software System for High-Performance Optimal Experimental Design}
+
 
 \newpage
+
+
 
 \begin{center}
 CONTRIBUTORS (SO FAR)
